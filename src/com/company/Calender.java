@@ -7,6 +7,8 @@ import java.io.File;
 public class Calender extends JFrame implements ActionListener {
     String[] months = {"January", "February", "March", "April", "May", "June", "July",
                         "August", "September","October", "November", "December"};
+    int[] daysinMonths = {31,28,31,30,31,30,31,31,30,31,30,31};
+    int[] dayMonthstart = {1,4,4,7,2,5,7,3,6,1,4,6};
     public Calender(){
         int width = 130;
         int height = 50;
@@ -43,9 +45,14 @@ public class Calender extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("January")){
-            new Calender(1,31);
+        for(int x = 0; x<13;x++) {
+            if (e.getActionCommand().equals(months[x])) {
+                new Calender(dayMonthstart[x], daysinMonths[x]);
+            }
         }
+
+
+
     }
 
 }
